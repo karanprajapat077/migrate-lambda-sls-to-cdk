@@ -35,7 +35,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install zip
-          (cd src/handler/time_checker_lambda && mkdir zippedPackage && zip -r zippedPackage/deployment_package_time_checker_lambda.zip . && zip -g zippedPackage/deployment_package_time_checker_lambda.zip index.py)
+          (cd src/handlers/time_checker_lambda && mkdir zippedPackage && zip -r zippedPackage/deployment_package_time_checker_lambda.zip . && zip -g zippedPackage/deployment_package_time_checker_lambda.zip index.py)
 
       - name: Deploy with Serverless
         env:
