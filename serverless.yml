@@ -1,0 +1,19 @@
+service: time-checker-service
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: ap-south-1             # Mumbai region                   
+
+functions:
+  timeChecker:
+    name: time-checker-lambda
+    description: "Lambda function to check if target time has been reached"
+    handler: src/handler/time_checker_lambda/index.lambda_handler
+    role: arn:aws:iam::126532164424:role/TestingLambdaRole
+    package:
+      include:
+        - src/handler/time_checker_lambda/**
+    
+      
+
