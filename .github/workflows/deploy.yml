@@ -31,13 +31,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
+      - name: Zip lambda function
+        run: |
+          sudo apt-get update
+          sudo apt-get install zip
+          (cd src/handler/time_checker_lambda && mkdir zippedPackage && zip -r zippedPackage/deployment_package_time_checker_lambda.zip . && zip -g zippedPackage/deployment_package_time_checker_lambda.zip index.py)
+
       - name: Deploy with Serverless
         env:
           SERVERLESS_ACCESS_KEY: ""
           SERVERLESS_PLATFORM_STAGE: dev
         run: |
-          ls
-          apt-get update
-          apt-get install zip
-          (cd src/handler/time_checker_lambda && mkdir zippedPackage && zip -r zippedPackage/deployment_package_time_checker_lambda.zip . && zip -g zippedPackage/deployment_package_time_checker_lambda.zip index.py)
           sls deploy --no-confirm
