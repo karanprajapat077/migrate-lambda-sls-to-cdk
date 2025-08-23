@@ -33,15 +33,15 @@ jobs:
 
       - name: Zip lambda function
         run: |
-          # sudo apt-get update
-          # sudo apt-get install zip
-          # (cd src/handlers/time_checker_lambda && mkdir zippedPackage && zip -r zippedPackage/deployment_package_time_checker_lambda.zip . && zip -g zippedPackage/deployment_package_time_checker_lambda.zip index.py)
           sudo apt-get update
-          sudo apt-get install -y zip
-          cd src/handlers/time_checker_lambda
-          mkdir -p zippedPackage
-          zip -r zippedPackage/deployment_package_time_checker_lambda.zip index.py utils
-          cd ../../../.. 
+          sudo apt-get install zip
+          (cd src/handlers/time_checker_lambda && mkdir zippedPackage && pip install -r requirement.txt --target ./package && cd package && zip -r ../zippedPackage/deployment_package_time_checker_lambda.zip . && cd .. && zip -g zippedPackage/deployment_package_time_checker_lambda.zip index.py)
+          # sudo apt-get update
+          # sudo apt-get install -y zip
+          # cd src/handlers/time_checker_lambda
+          # mkdir -p zippedPackage
+          # zip -r zippedPackage/deployment_package_time_checker_lambda.zip index.py utils
+          # cd ../../../.. 
           
 
       - name: Deploy with Serverless
