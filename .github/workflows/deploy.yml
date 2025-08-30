@@ -30,32 +30,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
-
-      - name: Zip lambda function
-        run: |
-          sudo apt-get update
-          sudo apt-get install zip
-          (cd src/handlers/time_checker_lambda && mkdir zippedPackage && pip install -r requirement.txt --target ./package && cd package && zip -r ../zippedPackage/deployment_package_time_checker_lambda.zip . && cd .. && zip -g zippedPackage/deployment_package_time_checker_lambda.zip index.py)
-          (cd src/handlers/time_checker_lambda/zippedPackage && ls)
-          # sudo apt-get update
-          # sudo apt-get install zip
-          # (cd src/handlers/time_checker_lambda && mkdir zippedPackage && pip install -r requirement.txt --target ./package && cd package && zip -r ../zippedPackage/deployment_package_time_checker_lambda.zip . && cd .. && zip -g zippedPackage/deployment_package_time_checker_lambda.zip index.py)
-          # sudo apt-get update
-          # sudo apt-get install -y zip
-          # cd src/handlers/time_checker_lambda
-          # mkdir -p zippedPackage
-          # Install dependencies if any
-          # if [ -s requirement.txt ]; then
-          #   pip install -r requirement.txt --target ./package
-          #   cp index.py ./package/
-          #   cp -r utils ./package/ 2>/dev/null || true
-          #   cd package
-          #   zip -r ../zippedPackage/deployment_package_time_checker_lambda.zip .
-          #   cd ..
-          # else
-          #   zip -r zippedPackage/deployment_package_time_checker_lambda.zip index.py utils
-          # fi
-          # cd ../../../..
           
       - name: Deploy with Serverless
         env:

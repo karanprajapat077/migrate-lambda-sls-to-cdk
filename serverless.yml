@@ -14,7 +14,11 @@ functions:
     handler: index.lambda_handler
     role: arn:aws:iam::126532164424:role/TestingLambdaRole
     package:
-      artifact: src/handlers/time_checker_lambda/zippedPackage/deployment_package_time_checker_lambda.zip
+      include:
+        - src/handlers/time_checker_lambda/**
+      exclude:
+        - src/handlers/time_checker_lambda/requirement.txt
+        - src/handlers/time_checker_lambda/package/**
     
       
 
