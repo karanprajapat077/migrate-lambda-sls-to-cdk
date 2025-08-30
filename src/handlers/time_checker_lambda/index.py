@@ -1,5 +1,5 @@
 from datetime import datetime
-from utils.logger import SimpleLogger
+from .utils.logger import SimpleLogger
 
 logger = SimpleLogger("TimeChecker")
 
