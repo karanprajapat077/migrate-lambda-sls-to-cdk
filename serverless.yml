@@ -11,7 +11,7 @@ functions:
   timeChecker:
     name: time-checker-lambda
     description: "Lambda function to check if target time has been reached"
-    handler: index.lambda_handler
+    handler: src/handlers/time_checker_lambda/index.lambda_handler
     role: arn:aws:iam::126532164424:role/TestingLambdaRole
     package:
       include:
