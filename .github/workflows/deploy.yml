@@ -36,6 +36,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install zip
           (cd src/handlers/time_checker_lambda && mkdir zippedPackage && pip install -r requirement.txt --target ./package && cd package && zip -r ../zippedPackage/deployment_package_time_checker_lambda.zip . && cd .. && zip -g zippedPackage/deployment_package_time_checker_lambda.zip index.py)
+          (cd src/handlers/time_checker_lambda/zippedPackage && ls)
           # sudo apt-get update
           # sudo apt-get install -y zip
           # cd src/handlers/time_checker_lambda
